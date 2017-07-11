@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_time: 2017-07-10 17:07:49
+  autor_id: 
+
+two:
+  name: MyString
+  start_time: 2017-07-10 17:07:49
+  autor_id: 

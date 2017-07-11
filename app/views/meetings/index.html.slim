@@ -1,0 +1,13 @@
+p#notice= notice
+h1 Meetings
+- @meetings.each do |meeting|
+    = month_calendar do |date|
+      -if date == meeting.start_time.to_date
+        h4 = meeting.name
+        h6 = date
+        = link_to 'Edit', edit_meeting_path(meeting)
+        = link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' }
+      -else
+        h4 No meeting
+        =date
+= link_to 'New Meeting', new_meeting_path
