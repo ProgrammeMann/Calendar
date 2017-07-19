@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  # before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
   # GET /meetings
   # GET /meetings.json
@@ -28,7 +28,7 @@ class MeetingsController < ApplicationController
       if @meeting.save
         redirect_to @meeting, notice: 'Meeting was successfully created.'
       else
-        render :new
+        render :index
       end
   end
 
