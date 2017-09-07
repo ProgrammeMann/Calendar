@@ -6,12 +6,9 @@ h1 Meetings
 = month_calendar events: @meetings do |date, meetings| 
   -meetings.each do |meeting|
     -if date == meeting.start_time.to_date
-      h4 =link_to meeting.name, meeting
-      h6 = meeting.start_time
-    / не работает else 
-    -else 
-      h4 No meeting
-      h6 = date
+       = link_to meeting.name, meeting
+       = meeting.start_time
+    
 
 h1 My/All meetings
 - @meetings.each do |meeting|

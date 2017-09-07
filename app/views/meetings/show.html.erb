@@ -11,10 +11,15 @@
 </p>
 
 <p>
+  <strong>Desc:</strong>
+  <%= @meeting.description %>
+</p>
+
+<p>
   <strong>Autor:</strong>
   <%= @meeting.autor_id %>
 </p>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+<%= link_to 'Back', meetings_path %> |
 <%= link_to 'Delete', @meeting, method: :delete, data: { confirm: 'Are you sure?' } %>
