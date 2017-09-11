@@ -5,14 +5,19 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meetings = Meeting.all
+      @meetings = Meeting.all
+    
+  end
+  # GET /meetings/1
+  # GET /meetings.json
+  def my_meetings
+    @user = User.find params[:id]
+    @meetings = @user.meetings
   end
 
   # GET /meetings/1
   # GET /meetings/1.json
-  def show
-
-    # @meeting = Meeting.find(params[:autor_id])
+  def show 
   end
 
   # GET /meetings/new
@@ -27,11 +32,11 @@ class MeetingsController < ApplicationController
   # POST /meetings
   # POST /meetings.json
   def create
-    @meeting = Meeting.new(meeting_params)
+    @meeting = current_user.meetings.new(meeting_params)
       if @meeting.save
         redirect_to @meeting, notice: 'Meeting was successfully created.'
       else
-        render :index
+        render :new
       end
   end
 
@@ -62,6 +67,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :autor_id)
+      params.require(:meeting).permit(:name, :start_time, :description)
     end
 end

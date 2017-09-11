@@ -1,14 +1,35 @@
 p#notice= notice
-= link_to 'New Meeting', new_meeting_path
-h1 Meetings
-/ - @meetings.each do |meeting|
-/ =calendar @meetings do |meeting|
-= month_calendar events: @meetings do |date, meetings| 
-  -meetings.each do |meeting|
-    -if date == meeting.start_time.to_date
-       = link_to meeting.name, meeting
-       = meeting.start_time
-    
+.row
+  .medium-3.columns
+    ul.vertical.menu.accordion-menu[data-accordion-menu data-submenu-toggle="true"]
+      li
+        a[href="/meetings/new"]
+          | New Meeting
+      li
+        a[href="#"]
+          | Meetings params
+        ul.menu.vertical.nested
+          li
+            a[href="/my_meetings", :status = "my"]
+              | My Meetengs
+          li
+            a[href="/meetings", :status = "all"]
+              | All Meetengs
+      li
+        a[href="/users/edit"]
+          | Edit my account
+      li
+        a[href="/users/sign_out"]
+          | Log out
+  .medium-9.columns
+    h1 Meetings
+    =month_calendar events: @meetings do |date, meetings|
+      =date.day
+      -meetings.each do |meeting|
+        -if date == meeting.start_time.to_date
+          = link_to meeting.name, meeting
+          = meeting.start_time
+        
 
 h1 My/All meetings
 - @meetings.each do |meeting|
