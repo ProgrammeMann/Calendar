@@ -10,10 +10,10 @@ p#notice= notice
           | Meetings params
         ul.menu.vertical.nested
           li
-            a[href="/my_meetings", :status = "my"]
+            a[href="/my_meetings"]
               | My Meetengs
           li
-            a[href="/meetings", :status = "all"]
+            a[href="/meetings"]
               | All Meetengs
       li
         a[href="/users/edit"]
@@ -27,11 +27,6 @@ p#notice= notice
       =date.day
       -meetings.each do |meeting|
         -if date == meeting.start_time.to_date
-          = link_to meeting.name, meeting
-          = meeting.start_time
-        
-
-h1 My/All meetings
-- @meetings.each do |meeting|
-  =link_to meeting.name, meeting
-  =meeting.start_time
+          li
+              = link_to meeting.name, meeting
+              = meeting.start_time.strftime("%I:%M%p")
