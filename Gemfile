@@ -41,6 +41,10 @@ gem 'devise'
 
 gem 'foundation-rails', '6.2.4.0'
 
+gem 'recurring_select', git: 'https://github.com/sahild/recurring_select.git', branch: 'master'
+
+gem 'ice_cube', '0.14.0' 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

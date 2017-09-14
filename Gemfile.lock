@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/sahild/recurring_select.git
+  revision: 08d08c0cd0fd792f4251d31dc90c1f449b83d712
+  branch: master
+  specs:
+    recurring_select (2.0.0)
+      coffee-rails (>= 3.1)
+      ice_cube (>= 0.11)
+      jquery-rails (>= 3.0)
+      rails (>= 3.2)
+      sass-rails (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,6 +83,7 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
+    ice_cube (0.14.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -193,11 +206,13 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   foundation-rails (= 6.2.4.0)
+  ice_cube (= 0.14.0)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
   puma (~> 3.0)
   rails (~> 5.0.2)
+  recurring_select!
   sass-rails (~> 5.0)
   simple_calendar (~> 2.0)
   slim-rails

@@ -10,7 +10,7 @@ p#notice= notice
           | Meetings params
         ul.menu.vertical.nested
           li
-            a[href="/my_meetings"]
+            a[href="/meetings"]
               | My Meetengs
           li
             a[href="/meetings"]
@@ -23,7 +23,7 @@ p#notice= notice
           | Log out
   .medium-9.columns
     h1 Meetings
-    =month_calendar events: @meetings do |date, meetings|
+    =month_calendar events: @calendar_meetings do |date, meetings|
       =date.day
       -meetings.each do |meeting|
         -if date == meeting.start_time.to_date

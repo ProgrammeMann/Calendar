@@ -5,15 +5,24 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-      @meetings = Meeting.all
+    @meetings = Meeting.all
+    @calendar_meetings = @meetings.flat_map{ |e| e.calendar_meetings(params.fetch(:start_date, Time.zone.now).to_date) }
+    # if params[:status] == 'all'
+    #   # @user = User.find(params[:id])
+    #   # @meetings = Meeting.find(:user_id == current_user.id)
+    #   @meetings = Meeting.all
+    # else
+    #   @meetings = @meetings.find(params[:user_id])
+    # end
+      
     
   end
-  # GET /meetings/1
-  # GET /meetings.json
-  def my_meetings
-    @user = User.find(params[:id])
-    @meetings = @user.meetings
-  end
+  # # GET /meetings/1
+  # # GET /meetings.json
+  # def my_meetings
+  #   @user = User.find(params[:id])
+  #   @meetings = @user.meetings
+  # end
 
   # GET /meetings/1
   # GET /meetings/1.json
@@ -44,7 +53,7 @@ class MeetingsController < ApplicationController
   # PATCH/PUT /meetings/1.json
   def update
     respond_to do |format|
-      if @meeting.update(meeting_params) && current_user.id == @meeting.autor_id
+      if @meeting.update(meeting_params) # && current_user.id == @meeting.user_id
         redirect_to @meeting, notice: 'Meeting was successfully created.'
       else
         render :edit
@@ -67,6 +76,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :description)
+      params.require(:meeting).permit(:name, :start_time, :description, :recurring)
     end
 end
