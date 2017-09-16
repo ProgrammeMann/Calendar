@@ -43,3 +43,7 @@ development:
 test:
   <<: *default
 database: calendar_test
+
+production:
+  <<: *default
+  database: calendar_dev
