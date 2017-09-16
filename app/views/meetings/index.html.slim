@@ -28,5 +28,5 @@ p#notice= notice
       -meetings.each do |meeting|
         -if date == meeting.start_time.to_date
           li
-              = link_to meeting.name, meeting
+              = link_to meeting.name, meeting_path(meeting.id, time: meeting.start_time)
               = meeting.start_time.strftime("%I:%M%p")
