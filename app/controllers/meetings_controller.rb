@@ -7,22 +7,9 @@ class MeetingsController < ApplicationController
   def index
     @meetings = Meeting.all
     @calendar_meetings = @meetings.flat_map{ |e| e.calendar_meetings(params.fetch(:start_date, Time.zone.now).to_date) }
-    # if params[:status] == 'all'
-    #   # @user = User.find(params[:id])
-    #   # @meetings = Meeting.find(:user_id == current_user.id)
-    #   @meetings = Meeting.all
-    # else
-    #   @meetings = @meetings.find(params[:user_id])
-    # end
       
     
   end
-  # # GET /meetings/1
-  # # GET /meetings.json
-  # def my_meetings
-  #   @user = User.find(params[:id])
-  #   @meetings = @user.meetings
-  # end
 
   # GET /meetings/1
   # GET /meetings/1.json
@@ -36,6 +23,9 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/1/edit
   def edit
+    if current_user.id != @meeting.user_id
+      render 'show'     
+    end
   end
 
   # POST /meetings

@@ -2,22 +2,17 @@ class MyMeetingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
   
-  def show 
-  end
-   def index
-   	Meeting.all
-   	
-   end
+   
 def index
-	# @user = User.find(params[:id])
-    # @meetings = @user.meetings
-    @meeting = Meeting.find(current_user.id)
+    @meetings = current_user.meetings
+    @calendar_meetings = @meetings.flat_map{ |e| e.calendar_meetings(params.fetch(:start_date, Time.zone.now).to_date) }
+
 end
 
 private
   # Use callbacks to share common setup or constraints between actions.
   def set_meeting
-    @meeting = Meeting.find(current_user.id)
+    @meeting = Meeting.find(params[:id])
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def meeting_params
