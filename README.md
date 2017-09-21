@@ -1,24 +1,9 @@
 # README
+Тестовое задание для стажировки в Flatstack, task 2
+https://calendar-from-pavlov.herokuapp.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Дополнительный функционал:
+Как дополнительную полезную функциональность я добавил админку (gem 'activeadmin'), так как любой web-проект, где все пользователи могут добавлять и изменять информацию, может быть подвержен спаму.
+Поэтому для контроля над данными и пользователями необходим админ. 
+Вход в админку https://calendar-from-pavlov.herokuapp.com/admin/login admin@example.com password
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
